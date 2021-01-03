@@ -1,9 +1,15 @@
-// Append sample ids to the dropdown menu 
+// Set up the initial position of the page by sample IDs to the dropdown menu
+
+
+
+
 d3.json('samples.json').then((data)=>{
     var id=data.names;
     console.log(data.metadata);
-    var select=d3.selectAll('#selDataset');
-    Object.entries(id).forEach(([key,value])=>{
-        select.append('option').text(value);
+    var dropdownmenu = d3.selectall('#selDataset');
+
+    Object.entries(id).forEach(([i,v])=>{
+        dropdownmenu.append('option').text(v);
     })
 })
+
