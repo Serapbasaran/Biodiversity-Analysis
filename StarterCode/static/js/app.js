@@ -74,7 +74,8 @@ function init (){
                 
             var layout = { xaxis: {title: 'OTU ID'},
                            height: 600,
-                           width: 1000
+                           width: 1000,
+                           margin: {t:0, t:30}
                          };
             Plotly.newPlot('bubble',[trace1], layout);
         })
