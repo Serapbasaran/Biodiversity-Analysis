@@ -1,39 +1,38 @@
 // Set up the initial position of the page by sample IDs to the dropdown menu
 function init (){
-    var dropdown = d3.selectAll('#selDataset');
+    var selector = d3.selectAll('#selDataset');
 
     d3.json('samples.json').then((data)=>{
     
         var sampleNames=data.names;
         sampleNames.forEach((sample) => {
-            dropdown
+            selector
               .append("option")
               .text(sample)
               .property("value", sample);
             });
       
-        var initSample = sampleNames[0];
+        var defaultID = sampleNames[0];
     
-        barChart(initSample);
-        bubbleChart(initSample);
-        metaData(initSample);
+        barChart(defaultID);
+        bubbleChart(defaultID);
+        metaData(defaultID);
 
       });
      };
-    function optionChanged(newSample) {
-        // Fetch new data each time a new sample is selected
-        barChart(newSample);
-        bubbleChart(newSample);
-        metaData(newSample)
+    function optionChanged(newID) {
+        // Fetch new data each time a new subject ID is selected
+        barChart(newID);
+        bubbleChart(newID);
+        metaData(newID)
     };
     init ();
 
 
-    function barChart(sampleId){
+    function barChart(subjectId){
         d3.json('samples.json').then((data)=>{
             var samples=data.samples;
-            var testNum=samples.map(row=>row.id).indexOf(sampleId);
-            console.log(testNum)
+            var testNum=samples.map(row=>row.id).indexOf(subjectId);
             var otuValueTen=samples.map(row=>row.sample_values);
             var otuValueTen=otuValueTen[testNum].slice(0,10).reverse();
             var otuIdTen=samples.map(row=>row.otu_ids);
@@ -51,13 +50,12 @@ function init (){
         })
     };
     
-    function bubbleChart(sampleID){
+    function bubbleChart(subjectID){
         d3.json('samples.json').then((data)=>{
             var samples=data.samples;
-            var testNum=samples.map(row=>row.id).indexOf(sampleID);
+            var testNum=samples.map(row=>row.id).indexOf(subjectID);
             var otu_ids = samples.map(row => row.otu_ids);
-            var otu_ids = otu_ids[testNum];
-            console.log(otu_ids)
+            var otu_ids = otu_ids[testNum];            
             var sample_values = samples.map(row => row.sample_values);
             var sample_values = sample_values[testNum];
             var otu_labels = samples.map(row => row.otu_labels);
@@ -82,25 +80,23 @@ function init (){
     };
 
 
-// Display the sample metadata for each UTO_ID selected;
+// Display the metadata for each test object ID selected;
 
-function metaData(sampleID) {
+function metaData(subjectID) {
     d3.json("samples.json").then((data) => {
       var metadata = data.metadata;
-      // Filter the data for the object with the desired sample number
-      var resultArray = metadata.filter(object => object.id == sampleID);
-      var result = resultArray[0];
+      // Filter the data for the selected ID number 
+      var filteredData = metadata.filter(object => object.id == subjectID);
+      var result = filteredData[0];
       // Use d3 to select the panel with id of `#sample-metadata`
-      var PANEL = d3.select("#sample-metadata");
+      var panel = d3.select("#sample-metadata");
   
       // Use `.html("") to clear any existing metadata
-      PANEL.html("");
+          panel.html("");
   
       // Use `Object.entries` to add each key and value pair to the panel
-      // Hint: Inside the loop, you will need to use d3 to append new
-      // tags for each key-value in the metadata.
-      Object.entries(result).forEach(([key, value]) => {
-        PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+          Object.entries(result).forEach(([key, value]) => {
+          panel.append("h6").text(`${key.toUpperCase()}: ${value}`);
       });
     });
 }  
