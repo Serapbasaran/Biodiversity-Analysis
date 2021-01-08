@@ -120,18 +120,18 @@ function gaugeChart(subjectID) {
               title: { text: "Belly Button Washing Frequency</b> <br> Scrubs per Week", font: { size: 18 } },
               gauge: {
                 axis: { range: [null, 9], tickwidth: 1, tickcolor: "black" }, // Max value is 9
-                bar: { color: "darkblue" },  
+                bar: { color: "gray" },  
                 bgcolor: "white",
                 borderwidth: 2,
-                bordercolor: "black",
+                bordercolor: "gray",
                 // Set the colors for the different ranges on the gauge
                 steps: [
-                  { range: [0, 1], color: "lightcoral" },
-                  { range: [1, 2], color: "lightpink" },
-                  { range: [2, 3], color: "yellowgreen" },
-                  { range: [3, 4], color: "lightgreen" },
-                  { range: [4, 5], color: "green" },
-                  { range: [5, 6], color: "lightblue" },
+                  { range: [0, 1], color: "rgb(255, 255, 255)" },
+                  { range: [1, 2], color: "rgb(232,226,202)"},
+                  { range: [2, 3], color: "rgb(226,210,172)"},
+                  { range: [3, 4], color: "rgb(223,189,139)" },
+                  { range: [4, 5], color: "rgb(223,162,103)" },
+                  { range: [5, 6], color: "rgb(226,126,64)" },
                   { range: [6, 7], color: "cyan" },
                   { range: [7, 8], color: "royalblue" },
                   { range: [8, 9], color: "blue" }
@@ -146,7 +146,7 @@ function gaugeChart(subjectID) {
             height: 400,
             margin: { t: 25, r: 25, l: 25, b: 25 },
             paper_bgcolor: "lavender",
-            font: { color: "darkblue", family: "Arial" }
+            font: { color: "blue", family: "Arial" }
           };  
 
         Plotly.newPlot("gauge", data, layout);
