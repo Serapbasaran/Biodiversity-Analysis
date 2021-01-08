@@ -49,7 +49,9 @@ function init (){
                 type:'bar',
                 orientation:'h'
             }
-            Plotly.newPlot('bar',[trace]);
+            var layout = {title: "Top 10 OTUs Found", margin: { t: 30, l: 150 }};
+      
+           Plotly.newPlot('bar',[trace],layout);
         })
     };
  // Create a bubble chart that displays each sample for the selected subject ID
@@ -117,7 +119,7 @@ function gaugeChart(subjectID) {
               type: "indicator",
               mode: "gauge+number",
               value: wfreqValue,
-              title: { text: "Belly Button Washing Frequency</b> <br> Scrubs per Week", font: { size: 18 } },
+              title: { text: "Belly Button Washing Frequency per Week", font: { size: 18 } },
               gauge: {
                 axis: { range: [null, 9], tickwidth: 1, tickcolor: "black" }, // Max value is 9
                 bar: { color: "gray" },  
@@ -128,13 +130,13 @@ function gaugeChart(subjectID) {
                 steps: [
                   { range: [0, 1], color: "rgb(255, 255, 255)" },
                   { range: [1, 2], color: "rgb(232,226,202)"},
-                  { range: [2, 3], color: "rgb(226,210,172)"},
-                  { range: [3, 4], color: "rgb(223,189,139)" },
-                  { range: [4, 5], color: "rgb(223,162,103)" },
-                  { range: [5, 6], color: "rgb(226,126,64)" },
-                  { range: [6, 7], color: "rgb(255, 166, 77)" },
-                  { range: [7, 8], color: "royalblue" },
-                  { range: [8, 9], color: "blue" }
+                  { range: [2, 3], color: "rgb(255, 247, 230)"},
+                  { range: [3, 4], color: "rgb(255, 218, 179)"},
+                  { range: [4, 5], color: "rgb(255, 206, 153)"},
+                  { range: [5, 6], color: "rgb(255, 193, 128)"},
+                  { range: [6, 7], color: "rgb(255, 181, 102)" },
+                  { range: [7, 8], color: "rgb(255, 169, 77)" },
+                  { range: [8, 9], color: "rgb(255, 133, 51)" }
                 ],  
               }  
             }  
@@ -146,7 +148,7 @@ function gaugeChart(subjectID) {
             height: 400,
             margin: { t: 25, r: 25, l: 25, b: 25 },
             paper_bgcolor: "lavender",
-            font: { color: "blue", family: "Arial" }
+            font: { color: "rgb(51, 102, 255)", family: "Arial" }
           };  
 
         Plotly.newPlot("gauge", data, layout);
