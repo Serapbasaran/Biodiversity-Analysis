@@ -1,4 +1,4 @@
-// Set up the initial position of the page by the default Subject ID number from dropdown menu
+// Build the initial position of the page by setting the default Subject ID number from dropdown menu
 function init (){
     var selector = d3.selectAll('#selDataset');
 
@@ -105,7 +105,7 @@ function metaData(subjectID) {
     });
 } 
 
-// Adapt a Gauge chart to plot weekly washing frequency of teh individual
+// Adapt a Gauge chart to plot weekly washing frequency of the individual
 function gaugeChart(subjectID) {
     d3.json("samples.json").then((data) => {
         var metadata = data.metadata;
