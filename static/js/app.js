@@ -132,7 +132,7 @@ function gaugeChart(subjectID) {
                   { range: [3, 4], color: "rgb(223,189,139)" },
                   { range: [4, 5], color: "rgb(223,162,103)" },
                   { range: [5, 6], color: "rgb(226,126,64)" },
-                  { range: [6, 7], color: "cyan" },
+                  { range: [6, 7], color: "rgb(255, 166, 77)" },
                   { range: [7, 8], color: "royalblue" },
                   { range: [8, 9], color: "blue" }
                 ],  
