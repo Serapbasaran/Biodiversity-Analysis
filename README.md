@@ -29,5 +29,5 @@ The dataset reveals that a small handful of microbial species (also called opera
 7. Update all of the plots any time that a new sample is selected.
 
 
-
+![Image] (https://github.com/Serapbasaran/Plotly-challenge/blob/main/Images/Screenshot%202021-04-28%20192121.png)
 
